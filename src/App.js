@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import SearchBar from './Components/SearchBar/SearchBar';
-import CurrentWeather from './Components/CurrentWeather/CurrentWeather';
-import Forecast from './Components/Forecast/Forecast';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import SearchBar from "./Components/SearchBar/SearchBar";
+import CurrentWeather from "./Components/CurrentWeather/CurrentWeather";
+import Forecast from "./Components/Forecast/Forecast";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const apiKey = '479b1677fe3377fe4e3c8156e8c270a1'; // ضع مفتاح API الخاص بك هنا
+  const apiKey = "479b1677fe3377fe4e3c8156e8c270a1"; // ضع مفتاح API الخاص بك هنا
   const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   const forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
 
@@ -28,7 +28,7 @@ function App() {
       const response = await axios.get(weatherApiUrl);
       setWeatherData(response.data);
     } catch (error) {
-      setError('Error fetching weather data. Please try again.');
+      setError("Error fetching weather data. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -41,7 +41,7 @@ function App() {
       const response = await axios.get(forecastApiUrl);
       setForecastData(response.data);
     } catch (error) {
-      setError('Error fetching forecast data. Please try again.');
+      setError("Error fetching forecast data. Please try again.");
     } finally {
       setLoading(false);
     }
